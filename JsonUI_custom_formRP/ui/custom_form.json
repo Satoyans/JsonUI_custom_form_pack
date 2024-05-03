@@ -1,0 +1,358 @@
+{
+	"namespace": "custom_form",
+
+	"custom_panel": {
+		"type": "panel",
+		"size": ["100%", "100%"],
+		"controls": [
+			{
+				"long_form_dynamic_buttons_panel": {
+					"type": "grid",
+					"anchor_from": "top_left",
+					"anchor_to": "top_left",
+					"size": ["100%", "90%"],
+
+					"grid_dimensions": [1, 100],
+					"grid_rescaling_type": "horizontal",
+					"grid_fill_direction": "horizontal",
+					"grid_item_template": "custom_form.custom_button",
+
+					"collection_name": "form_buttons",
+					"bindings": [
+						{
+							"binding_name": "#form_button_length",
+							"binding_name_override": "#maximum_grid_items"
+						}
+					]
+				}
+			}
+		]
+	},
+	"custom_button_data_control": {
+		"$field_index|default": 1,
+		"type": "panel",
+		"bindings": [
+			{
+				"binding_name": "#form_button_text",
+				"binding_name_override": "#base_string",
+				"binding_type": "collection",
+				"binding_collection_name": "form_buttons"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "('%.1s' * #base_string)",
+				"target_property_name": "#field_length_length"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(1 + #field_length_length)",
+				"target_property_name": "#prefix_length"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "((';'+('%.'+#prefix_length+'s') * #base_string)-(';'+ '%.1s' * #base_string))",
+				"target_property_name": "#field_length"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(';' + #base_string - (';' + ('%.'+#prefix_length+'s') * #base_string))",
+				"target_property_name": "#field_string"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(';' + ('%.' + (($field_index - 1) * #field_length) + 's') * #field_string))",
+				"target_property_name": "#before_field_string"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(';' + ('%.' + ($field_index * #field_length) + 's') * #field_string)",
+				"target_property_name": "#after_field_string"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(#after_field_string - #before_field_string - ';')",
+				"target_property_name": "#text_string"
+			}
+		]
+	},
+	"custom_button_visible_control": {
+		"$field_index": 1,
+		"$trigger_text|default": "text",
+		"type": "panel",
+		"bindings": [
+			{
+				"binding_name": "#form_button_text",
+				"binding_name_override": "#base_string",
+				"binding_type": "collection",
+				"binding_collection_name": "form_buttons"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "('%.1s' * #base_string)",
+				"target_property_name": "#field_length_length"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(1 + #field_length_length)",
+				"target_property_name": "#prefix_length"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "((';'+('%.'+#prefix_length+'s') * #base_string)-(';'+ '%.1s' * #base_string))",
+				"target_property_name": "#field_length"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(';' + #base_string - (';' + ('%.'+#prefix_length+'s') * #base_string))",
+				"target_property_name": "#field_string"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(';' + ('%.' + (($field_index - 1) * #field_length) + 's') * #field_string))",
+				"target_property_name": "#before_field_string"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(';' + ('%.' + ($field_index * #field_length) + 's') * #field_string)",
+				"target_property_name": "#after_field_string"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(#after_field_string - #before_field_string - ';')",
+				"target_property_name": "#text_string"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(not ((#text_string - $trigger_text) = #text_string))",
+				"target_property_name": "#visible"
+			}
+		]
+	},
+	"custom_button_property_bag_control": {
+		"$field_index": 3,
+		"type": "panel",
+		"bindings": [
+			{
+				"binding_name": "#form_button_text",
+				"binding_name_override": "#base_string",
+				"binding_type": "collection",
+				"binding_collection_name": "form_buttons"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "('%.1s' * #base_string)",
+				"target_property_name": "#1_length_length"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(1 + #1_length_length)",
+				"target_property_name": "#1_prefix_length"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "((';'+('%.'+#1_prefix_length+'s') * #base_string)-(';'+ '%.1s' * #base_string))",
+				"target_property_name": "#1_field_length"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(';' + #base_string - (';' + ('%.'+#1_prefix_length+'s') * #base_string))",
+				"target_property_name": "#1_field_string"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(';' + ('%.' + (($field_index - 1) * #1_field_length) + 's') * #1_field_string))",
+				"target_property_name": "#1_before_field_string"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(';' + ('%.' + ($field_index * #1_field_length) + 's') * #1_field_string)",
+				"target_property_name": "#1_after_field_string"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(';' + ('先頭文字列' + #1_after_field_string - #1_before_field_string - ';') - '先頭文字列')",
+				"target_property_name": "#text_string" //この中に;[len'slen][len][sizeX,sizeY,offsetX,offsetY]
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "('%.2s' * #text_string - ';')",
+				"target_property_name": "#2_length_length"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(1 + #2_length_length + 1)",
+				"target_property_name": "#2_prefix_length"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "((('%.'+#2_prefix_length+'s') * #text_string)-('%.2s' * #text_string))",
+				"target_property_name": "#2_field_length"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(';' + ('先頭文字列' + #text_string - ('%.' + #2_prefix_length + 's') * #text_string - ';') - '先頭文字列')",
+				"target_property_name": "#2_field_string"
+			},
+			{
+				//sizeX
+				"binding_type": "view",
+				"source_property_name": "( (('%.' + (1 * #2_field_length + 1) + 's') * #2_field_string) - (('%.' + ((1 - 1) * #2_field_length + 1) + 's') * #2_field_string) )",
+				"target_property_name": "#sizeX"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(#sizeX * 1.0)",
+				"target_property_name": "#size_binding_x"
+			},
+			{
+				//sizeY
+				"binding_type": "view",
+				"source_property_name": "(('%.' + (2 * #2_field_length + 1) + 's') * #2_field_string - ('%.' + ((2 - 1) * #2_field_length + 1) + 's') * #2_field_string)",
+				"target_property_name": "#sizeY"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(#sizeY * 1.0)",
+				"target_property_name": "#size_binding_y"
+			},
+			{
+				//offsetX
+				"binding_type": "view",
+				"source_property_name": "(('%.' + (3 * #2_field_length + 1) + 's') * #2_field_string - ('%.' + ((3 - 1) * #2_field_length + 1) + 's') * #2_field_string)",
+				"target_property_name": "#offsetX"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(#offsetX * 1.0)",
+				"target_property_name": "#anchored_offset_value_x"
+			},
+			{
+				//offsetY
+				"binding_type": "view",
+				"source_property_name": "(('%.' + (4 * #2_field_length + 1) + 's') * #2_field_string - ('%.' + ((4 - 1) * #2_field_length + 1) + 's') * #2_field_string)",
+				"target_property_name": "#offsetY"
+			},
+			{
+				"binding_type": "view",
+				"source_property_name": "(#offsetY * 1.0)",
+				"target_property_name": "#anchored_offset_value_y"
+				//},
+				//{
+				//	"binding_type": "view",
+				//	"source_property_name": "('§z' + 'size:[' + #sizeX + ',' + #sizeY + ']\noffset:[' + #offsetX + ',' + #offsetY + ']')",
+				//	"target_property_name": "#show_text"
+			}
+		]
+	},
+	"custom_button": {
+		"type": "panel",
+		"size": [1, 1],
+		"layer": 1,
+		"controls": [
+			{
+				"main_ui@custom_button_property_bag_control": {
+					//"type": "label",
+					//"text": "#show_text",
+					"type": "panel",
+					"anchor_from": "top_left",
+					"anchor_to": "top_left",
+					"size": [1, 1],
+					"use_anchored_offset": true,
+
+					"controls": [
+						{
+							"text_panel@custom_button_visible_control": {
+								"$trigger_text": "text",
+								"size": "fill",
+								"controls": [
+									{
+										"text@custom_form.custom_button_data_control": {
+											"$field_index": 2,
+											"type": "label",
+											"text": "#text_string",
+											"layer": 11,
+											"color": [255, 255, 255],
+											"anchor_from": "center",
+											"anchor_to": "center"
+										}
+									}
+								]
+							}
+						},
+						{
+							"image_panel@custom_button_visible_control": {
+								"$trigger_text": "image",
+								"size": "fill",
+								"controls": [
+									{
+										"image": {
+											"type": "image",
+											"layer": 10,
+
+											"anchor_from": "center",
+											"anchor_to": "center",
+											"keep_ratio": false,
+											"allow_debug_missing_texture": false, //一旦消しとく
+
+											"bindings": [
+												{
+													"binding_name": "#form_button_texture",
+													"binding_name_override": "#texture",
+													"binding_type": "collection",
+													"binding_collection_name": "form_buttons"
+												},
+												{
+													"binding_name": "#form_button_texture_file_system",
+													"binding_name_override": "#texture_file_system",
+													"binding_type": "collection",
+													"binding_collection_name": "form_buttons"
+												},
+												{
+													"binding_type": "view",
+													"source_control_name": "custom_button",
+													"source_property_name": "(not ((#texture = '') or (#texture = 'loading')))",
+													"target_property_name": "#visible"
+												}
+											]
+										}
+									}
+								]
+							}
+						},
+						{
+							"button_panel@custom_button_visible_control": {
+								"$trigger_text": "button",
+								"size": "fill",
+								"controls": [
+									{
+										"button@common_buttons.light_text_button": {
+											"$default_button_texture": "textures/blocks/concrete_white",
+											"$hover_button_texture": "textures/blocks/concrete_white",
+											"$pressed_button_texture": "textures/blocks/concrete_white",
+											"$locked_button_texture": "textures/blocks/concrete_white",
+											"layer": 0,
+											"$light_border_hover_color": [255, 255, 255],
+											"$pressed_button_name": "button.form_button_click",
+											"anchor_from": "center",
+											"anchor_to": "center",
+											"$button_text": "",
+											"$button_text_binding_type": "collection",
+											"$button_text_grid_collection_name": "form_buttons",
+											"$button_text_max_size": ["100%", 20],
+											"bindings": [
+												{
+													"binding_type": "collection_details",
+													"binding_collection_name": "form_buttons"
+												}
+											]
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			}
+		]
+	}
+}

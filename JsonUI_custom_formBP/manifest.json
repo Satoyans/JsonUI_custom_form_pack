@@ -1,0 +1,30 @@
+{
+	"format_version": 2,
+	"header": {
+		"name": "JsonUI_custom_formBP",
+		"description": "",
+		"min_engine_version": [1, 20, 80],
+		"uuid": "fb540ac5-ca9e-4ebc-b812-41219eac1e4a",
+		"version": [1, 0, 0]
+	},
+	"modules": [
+		{
+			"type": "script",
+			"uuid": "00a7f76e-82a8-4775-90f5-45f5268c7060",
+			"language": "javascript",
+			"version": [1, 0, 0],
+			"entry": "scripts/main.js"
+		}
+	],
+	"dependencies": [
+		{
+			"module_name": "@minecraft/server",
+			"version": "1.10.0"
+		},
+		{
+			"module_name": "@minecraft/server-ui",
+			"version": "1.1.0"
+		},
+		{ "uuid": "3daa2bde-5ee6-495f-89fb-14453a078f92", "version": [1, 0, 0] }
+	]
+}
