@@ -4,6 +4,8 @@
 
 [JsonUI_custom_form_editor](https://github.com/Satoyans/JsonUI_custom_form_editor)で作成したUIを表示するアドオンです。
 
+`/scriptevent cf:form`を実行すると表示されます。
+
 `BP/scripts/form_data.js`を書き換えることで更新できます(多分)。
 
 自由に改変してもらって構いません
