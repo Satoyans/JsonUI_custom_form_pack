@@ -1,6 +1,6 @@
 # JsonUI_custom_form_editor
 
-![image](https://github.com/Satoyans/JsonUI_custom_form_pack/assets/90595639/2c7db046-e193-4ab6-9d5f-7ea5e2a9ef79)
+![image](https://github.com/Satoyans/JsonUI_custom_form_pack/assets/90595639/fefd67cc-f63d-4dc7-94cf-c5b756ebef51)
 
 [JsonUI_custom_form_editor](https://github.com/Satoyans/JsonUI_custom_form_editor)で作成したUIを表示するアドオンです。
 

@@ -2,10 +2,10 @@
 	"format_version": 2,
 	"header": {
 		"name": "JsonUI_custom_formRP",
-		"description": "",
+		"description": "create by satoyan(@satoyan38000304)\n§av1.0.1",
 		"min_engine_version": [1, 20, 80],
-		"uuid": "3daa2bde-5ee6-495f-89fb-14453a078f92",
-		"version": [1, 0, 0]
+		"uuid": "65da552e-f9ac-42dc-b1e3-7771a8491225",
+		"version": [1, 0, 1]
 	},
 	"modules": [
 		{
@@ -14,5 +14,5 @@
 			"version": [1, 0, 0]
 		}
 	],
-	"dependencies": [{ "uuid": "fb540ac5-ca9e-4ebc-b812-41219eac1e4a", "version": [1, 0, 0] }]
+	"dependencies": [{ "uuid": "2b6dcfaf-2232-45fa-8182-b751c3df442e", "version": [1, 0, 0] }]
 }
